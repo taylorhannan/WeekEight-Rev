@@ -1,3 +1,20 @@
-module.exports = function(app,fs){
-  //some code
+module.exports = function(app, db){
+  app.post('/api/add', (req, res) => {
+    var MongoClient = require('mongodb').MongoClient;
+    var url = "mongodb://localhost:27017/";
+    MongoClient.connect(url, function(err, db) {
+      if (err) throw err;
+      var dbo = db.db("mydb");
+      dbo.createCollection("products", function(err, res) {
+        if (err) throw err;
+        console.log("Collection created!");
+        db.close();
+      });
+      if(!err){
+        res.send({'success':true});
+      }else{
+        res.send({'success':false});
+      }
+    });
+});
 }

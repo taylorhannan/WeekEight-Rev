@@ -1,3 +1,73 @@
-<p>
-  crud works!
-</p>
+<h1>MongoDB CRUD</h1>
+<h2>Add Collection</h2>
+<form (submit)="createcollection();">
+  <input [(ngModel)]="collectionname" name="addcollection" placeholder="Collection Name...">
+  <br><br>
+  <button type="submit">Create Collection</button>
+</form>
+
+<h2>Create Data (create.js)</h2>
+<form (submit)="createProduct();" id="createProduct">
+  <p>Product Name</p>
+  <input [(ngModel)]="productname" name="productname"placeholder="Product Name..">
+  <br>
+  <p>Product Price</p>
+  <input [(ngModel)]="productprice" name="productprice" placeholder="Product Price..">
+  <br>
+  <p>Product Type</p>
+  <select [(ngModel)]="producttype" name="producttype">
+    <option value="fruit">Fruit</option>
+    <option value="vegetable">Vegetable</option>
+    <option value="other">Other</option>
+  </select>
+  <br>
+  <p>Product Description</p>
+  <input [(ngModel)]="productdesc" name="productdesc" placeholder="Product Description..">
+  <br><br>
+  <button type="submit">Add to Database</button>
+</form>
+
+<h2>Read Database (read.js)</h2>
+<form (submit)="readdatabase();">
+  <button type="submit">Read Database</button>
+</form>
+
+
+
+<h2>Update Data (update.js)</h2>
+<form (submit)="updatedata();">
+  <select placeholder="Update Data" [(ngModel)]="ogproductname" name="updproduct">
+    <option *ngFor="let product of products" [value]="product.productname">
+      {{product.productname}}
+    </option>
+  </select>
+  <p>New Product Name</p>
+  <input [(ngModel)]="newproductname" name="newproductname"placeholder="New Product Name..">
+  <br>
+  <p>New Product Price</p>
+  <input [(ngModel)]="newproductprice" name="newproductprice"placeholder="New Product Price..">
+  <br>
+  <p>New Product Type</p>
+  <select [(ngModel)]="newproducttype" name="newproducttype">
+    <option value="fruit">Fruit</option>
+    <option value="vegetable">Vegetable</option>
+    <option value="other">Other</option>
+  </select>
+  <br>
+  <p>New Product Description</p>
+  <input [(ngModel)]="newproductdesc" name="newproductdesc"placeholder="New Product Description..">
+  <br>
+  <br><br>
+  <button type="submit">Update Data</button>
+</form>
+
+
+<h2>Delete Data (delete.js)</h2>
+<form (submit)="deleteproduct(deletedproduct);">
+    <select placeholder="Delete Data" [(ngModel)]="deletedproduct" name="delproduct">
+      <option *ngFor="let product of products" [value]="product.productname">
+        {{product.productname}}
+      </option>
+    </select>
+  <button type="submit">Delete</button>
+</form>
