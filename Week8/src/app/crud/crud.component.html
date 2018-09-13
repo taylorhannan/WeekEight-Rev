@@ -28,6 +28,12 @@
 </form>
 
 <h2>Read Database (read.js)</h2>
+<p *ngFor="let product of products">
+  {{product.productname}}
+  {{product.productprice}}
+  {{product.producttype}}
+  {{product.productdesc}}
+</p>
 <form (submit)="readdatabase();">
   <button type="submit">Read Database</button>
 </form>
